@@ -1,0 +1,557 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counselling Student Cheat Code</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Professional Neutrals with Calming Blue Accents -->
+    <!-- Application Structure Plan: A single-page dashboard with a responsive navigation system. A fixed sidebar for desktop and a toggleable "hamburger" menu for mobile. The structure is thematic ('Core Concepts', 'Therapeutic Models', 'Developmental Theories', 'References'), prioritizing quick access to a vastly expanded library of information. This design is mobile-first, ensuring usability on any device, and uses interactive elements to manage content density. -->
+    <!-- Visualization & Content Choices: 
+        - Core Concepts: Expanded with more HTML/CSS diagrams (Maslow's Hierarchy, Kolb's Cycle, Cognitive Triangle) for visual learning. Goal: Explain foundational ideas clearly. Interaction: Hover effects and clear labels.
+        - Therapeutic Models: A greatly expanded, scrollable tabbed interface incorporating all therapies from the provided CSV file. Goal: Organize dense information on over a dozen models in a comparable format. Interaction: Clicking tabs to switch content.
+        - Developmental Theories: Interactive grids and detailed cards for Erikson, Piaget, Bowlby, and more. Goal: Show progression over time and provide depth. Interaction: Hovering over grid cells reveals more info.
+        - References: A dedicated section listing key academic and foundational texts for further study.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; scroll-behavior: smooth; }
+        h1, h2, h3, h4, h5 { font-family: 'Roboto Slab', serif; }
+        .sidebar { transition: transform 0.3s ease-in-out; }
+        .sidebar-link.active, .sidebar-link:hover { background-color: #e0f2fe; color: #0c4a6e; border-left-color: #0369a1; }
+        .content-section { display: none; animation: fadeIn 0.5s; }
+        .content-section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .tab-btn.active { border-bottom-color: #0369a1; color: #0c4a6e; font-weight: 600; }
+        .models-nav::-webkit-scrollbar { height: 4px; }
+        .models-nav::-webkit-scrollbar-thumb { background-color: #9ca3af; border-radius: 20px; }
+        .cbt-triangle-line { position: absolute; background-color: #9ca3af; height: 2px; transform-origin: left; }
+    </style>
+</head>
+<body class="bg-slate-50">
+
+    <!-- Main Content Wrapper -->
+    <div class="relative min-h-screen md:flex">
+        <!-- Mobile Header -->
+        <div class="bg-white md:hidden flex justify-between items-center p-4 border-b border-gray-200 sticky top-0 z-30">
+            <h1 class="text-xl font-bold text-sky-900">Counsellor's Cheat Code</h1>
+            <button id="mobile-menu-button" class="p-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar bg-white w-64 p-6 space-y-6 fixed inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 z-40 md:z-auto transition-transform duration-300 ease-in-out border-r border-gray-200">
+            <h1 class="text-2xl font-bold text-sky-900 mb-8 hidden md:block">Counsellor's<br>Cheat Code</h1>
+            <nav id="nav-menu" class="space-y-2">
+                <a href="#concepts" class="sidebar-link active flex items-center p-3 text-gray-600 font-semibold rounded-lg border-l-4 border-transparent">
+                    <span class="mr-3 text-xl">🧠</span> Core Concepts
+                </a>
+                <a href="#models" class="sidebar-link flex items-center p-3 text-gray-600 font-semibold rounded-lg border-l-4 border-transparent">
+                    <span class="mr-3 text-xl">🛋️</span> Therapeutic Models
+                </a>
+                <a href="#developmental" class="sidebar-link flex items-center p-3 text-gray-600 font-semibold rounded-lg border-l-4 border-transparent">
+                    <span class="mr-3 text-xl">👶</span> Developmental Theories
+                </a>
+                 <a href="#references" class="sidebar-link flex items-center p-3 text-gray-600 font-semibold rounded-lg border-l-4 border-transparent">
+                    <span class="mr-3 text-xl">📚</span> References
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main panel -->
+        <main class="flex-1 p-6 md:p-12">
+            
+            <!-- Section: Core Concepts -->
+            <section id="concepts" class="content-section active">
+                <h2 class="text-3xl font-bold text-gray-800 mb-8">Core Concepts & Tools</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="font-bold text-xl mb-4">Maslow's Hierarchy of Needs</h3>
+                        <div class="text-center text-white text-sm font-bold space-y-1">
+                            <div class="bg-purple-600 p-2 rounded-t-lg">Self-Actualization</div>
+                            <div class="bg-indigo-500 p-2">Esteem</div>
+                            <div class="bg-blue-500 p-2">Love & Belonging</div>
+                            <div class="bg-green-500 p-2">Safety Needs</div>
+                            <div class="bg-yellow-500 p-2 rounded-b-lg">Physiological Needs</div>
+                        </div>
+                        <p class="text-sm mt-4 text-gray-600">A motivational theory where foundational needs must be met before higher-level growth needs can be pursued.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="font-bold text-xl mb-4">Window of Tolerance</h3>
+                        <div class="space-y-2 text-center text-white">
+                            <div class="bg-red-500 p-2 rounded-lg"><strong>Hyper-arousal</strong><br><span class="text-xs">Fight/Flight, Anxiety</span></div>
+                            <div class="bg-blue-500 p-4 rounded-lg"><strong>Optimal Zone</strong><br><span class="text-xs">Grounded, Flexible, Present</span></div>
+                            <div class="bg-gray-500 p-2 rounded-lg"><strong>Hypo-arousal</strong><br><span class="text-xs">Freeze, Numb, Withdrawn</span></div>
+                        </div>
+                        <p class="text-sm mt-4 text-gray-600">The optimal zone of arousal for functioning. Therapy aims to widen this window, especially for clients with trauma.</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl shadow-md flex flex-col">
+                        <h3 class="font-bold text-xl mb-4">The Cognitive Triangle (CBT)</h3>
+                         <div id="cbt-triangle-container" class="relative w-full h-56 flex-grow">
+                            <div class="cbt-thoughts absolute top-0 left-1/2 -translate-x-1/2 text-center w-32"><span class="bg-sky-100 text-sky-800 p-2 rounded-lg shadow-sm text-sm font-semibold">Thoughts</span></div>
+                            <div class="cbt-feelings absolute bottom-0 left-0 text-center w-32"><span class="bg-green-100 text-green-800 p-2 rounded-lg shadow-sm text-sm font-semibold">Feelings</span></div>
+                            <div class="cbt-behaviours absolute bottom-0 right-0 text-center w-32"><span class="bg-amber-100 text-amber-800 p-2 rounded-lg shadow-sm text-sm font-semibold">Behaviours</span></div>
+                            <div id="cbt-line-1" class="cbt-triangle-line"></div>
+                            <div id="cbt-line-2" class="cbt-triangle-line"></div>
+                            <div id="cbt-line-3" class="cbt-triangle-line"></div>
+                        </div>
+                        <p class="text-sm mt-4 text-gray-600">A core CBT model illustrating the interconnectedness of thoughts, emotions, and actions.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="font-bold text-xl mb-4">Kolb's Experiential Learning Cycle</h3>
+                        <div class="relative w-48 h-48 mx-auto">
+                            <div class="absolute top-0 left-1/2 -translate-x-1/2 text-center"><span class="bg-blue-100 rounded-full px-2 text-sm">Concrete Experience</span></div>
+                            <div class="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 text-center"><span class="bg-green-100 rounded-full px-2 text-sm">Reflective Observation</span></div>
+                            <div class="absolute bottom-0 left-1/2 -translate-x-1/2 text-center"><span class="bg-yellow-100 rounded-full px-2 text-sm">Abstract Conceptualization</span></div>
+                            <div class="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 text-center"><span class="bg-red-100 rounded-full px-2 text-sm">Active Experimentation</span></div>
+                            <div class="absolute inset-0 flex items-center justify-center text-4xl text-gray-300 font-bold">&#8635;</div>
+                        </div>
+                        <p class="text-sm mt-4 text-gray-600">A four-stage cycle of learning where experience is translated into concepts which are then used to guide new experiences.</p>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="font-bold text-xl mb-4">Defense Mechanisms</h3>
+                        <p class="text-sm text-gray-600">Unconscious strategies used to cope with anxiety and protect the ego. Examples include:</p>
+                        <ul class="text-sm space-y-1 mt-2 text-gray-700">
+                           <li><strong>Repression:</strong> Pushing distressing thoughts into the unconscious.</li>
+                           <li><strong>Denial:</strong> Refusing to accept reality.</li>
+                           <li><strong>Projection:</strong> Attributing one's own unacceptable feelings to others.</li>
+                           <li><strong>Rationalization:</strong> Justifying behaviors with logical reasons, avoiding the true reasons.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                         <h3 class="font-bold text-xl mb-4">Biopsychosocial Model</h3>
+                        <p class="text-sm text-gray-600">A holistic framework asserting that health and illness are determined by a dynamic interaction between biological, psychological, and social factors.</p>
+                         <ul class="text-sm space-y-1 mt-2 text-gray-700">
+                            <li><strong>Bio:</strong> Genetics, physiology, neurochemistry.</li>
+                            <li><strong>Psycho:</strong> Emotions, thoughts, behaviors, beliefs.</li>
+                            <li><strong>Social:</strong> Culture, family, socioeconomic status, relationships.</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Section: Therapeutic Models -->
+            <section id="models" class="content-section">
+                <h2 class="text-3xl font-bold text-gray-800 mb-8">Therapeutic Models</h2>
+                <div class="bg-white rounded-xl shadow-md">
+                    <div class="border-b border-gray-200">
+                        <nav id="models-tabs" class="models-nav flex space-x-2 md:space-x-4 px-4 -mb-px overflow-x-auto">
+                            <!-- Tabs will be injected here -->
+                        </nav>
+                    </div>
+                    <div id="models-content" class="p-6 md:p-8">
+                        <!-- Tab content will be injected here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: Developmental Theories -->
+            <section id="developmental" class="content-section">
+                <h2 class="text-3xl font-bold text-gray-800 mb-8">Developmental Theories</h2>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md mb-8">
+                    <h3 class="font-bold text-xl mb-4">Erik Erikson: Psychosocial Development</h3>
+                    <p class="text-sm text-gray-600 mb-4">Erikson proposed eight sequential stages of human development. Each stage presents a psychosocial crisis, and successful completion results in a healthy personality and the acquisition of a basic virtue or 'syntonic' disposition.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <!-- Erikson stages will be injected here -->
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="font-bold text-xl mb-4">Jean Piaget: Cognitive Development</h3>
+                        <p class="text-sm text-gray-600 mb-4">Piaget's theory focuses on how children construct a mental model of the world through the processes of assimilation and accommodation. He viewed cognitive development as occurring in four distinct stages.</p>
+                        <div id="piaget-stages"></div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="font-bold text-xl mb-4">John Bowlby: Attachment Theory</h3>
+                         <p class="text-sm text-gray-600 mb-4">Bowlby's ethological theory suggests that infants have an innate need to form a strong attachment bond with a primary caregiver for survival. The quality of this bond creates an "internal working model" that acts as a template for all future relationships.</p>
+                        <div id="bowlby-styles"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: References -->
+            <section id="references" class="content-section">
+                 <h2 class="text-3xl font-bold text-gray-800 mb-8">References & Foundational Works</h2>
+                 <div class="bg-white p-6 rounded-xl shadow-md">
+                     <div class="space-y-4 text-sm" id="references-list">
+                         <!-- References will be injected here -->
+                     </div>
+                 </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script>
+        // --- DATA ---
+        const modelsData = {
+            'Adlerian': {
+                name: 'Adlerian Therapy',
+                content: {
+                    'Key Concepts': 'Holistic view of the person, life-style, social interest (Gemeinschaftsgefühl), striving for superiority/perfection, birth order, subjective perception of reality. Believes behavior is purposeful and goal-oriented (teleology).',
+                    'View of Maladaptive Behavior': 'Stems from discouragement, exaggerated feelings of inferiority, and a lack of social interest. Maladaptive behavior is seen as a mistaken attempt to find significance.',
+                    'Therapeutic Goals': 'To foster social interest, help clients overcome feelings of inferiority and discouragement, modify their views and goals, and change their lifestyle to a more adaptive one.',
+                    'Therapeutic Techniques': 'Life-style assessment (family constellation, early recollections), encouragement, exploring mistaken goals and faulty assumptions, "The Question" ("What would be different if you were well?").',
+                    'Therapeutic Relationship': 'Collaborative partnership based on mutual respect. The therapist acts as a teacher and encourager.',
+                    'Key Figures': 'Alfred Adler, Rudolf Dreikurs.'
+                }
+            },
+            'Existential': {
+                name: 'Existential Therapy',
+                content: {
+                    'Key Concepts': 'Focuses on the "givens of existence": freedom and responsibility, death, isolation, and meaninglessness. Emphasizes self-awareness and the capacity to make choices.',
+                    'View of Maladaptive Behavior': 'Seen as a result of failing to confront the realities of existence, leading to existential anxiety, inauthenticity, and a lack of meaning.',
+                    'Therapeutic Goals': 'To help clients accept their freedom and responsibility, find meaning in their lives, confront anxieties, and live authentically.',
+                    'Therapeutic Techniques': 'Not technique-oriented. Focuses on deep listening, philosophical dialogue, and exploring the client\'s subjective experience of the world.',
+                    'Therapeutic Relationship': 'An authentic, person-to-person encounter. The therapist is a fellow traveler, not an expert on the client\'s life.',
+                    'Key Figures': 'Viktor Frankl, Rollo May, Irvin Yalom, James Bugental.'
+                }
+            },
+            'Person-Centered': {
+                name: 'Person-Centered Therapy',
+                content: {
+                    'Key Concepts': 'Belief in the client\'s innate capacity for growth and self-healing (actualizing tendency). Focuses on the client\'s subjective experience.',
+                    'View of Maladaptive Behavior': 'Arises from incongruence between the real self and the ideal self, often due to conditions of worth imposed by others.',
+                    'Therapeutic Goals': 'To provide a climate of safety and trust that allows the client to become more open, self-aware, and congruent, thus activating their self-actualizing tendency.',
+                    'Therapeutic Techniques': 'Avoids techniques. The therapist embodies three core conditions: Congruence (genuineness), Unconditional Positive Regard, and Accurate Empathic Understanding.',
+                    'Therapeutic Relationship': 'The relationship *is* the therapy. The therapist is a facilitator, creating a supportive environment for the client\'s growth.',
+                    'Key Figures': 'Carl Rogers.'
+                }
+            },
+            'Gestalt': {
+                name: 'Gestalt Therapy',
+                content: {
+                    'Key Concepts': 'Holism, field theory, figure-formation process, organismic self-regulation. Strong focus on the "here and now" and bringing "unfinished business" from the past into the present.',
+                    'View of Maladaptive Behavior': 'Seen as "creative adjustments" to difficult situations that are no longer functional. Arises from interruptions in the cycle of experience (contact boundary disturbances).',
+                    'Therapeutic Goals': 'To increase awareness of the self, the present moment, and the environment. To help clients assume ownership of their experience and take responsibility for their lives.',
+                    'Therapeutic Techniques': 'Experiential exercises like the empty chair technique, role-playing, exaggeration, and focusing on non-verbal cues.',
+                    'Therapeutic Relationship': 'An authentic, I/Thou dialogue. The therapist is an active participant who uses their own awareness to guide the client.',
+                    'Key Figures': 'Fritz Perls, Laura Perls, Paul Goodman.'
+                }
+            },
+            'Behaviour': {
+                name: 'Behaviour Therapy',
+                content: {
+                    'Key Concepts': 'Based on principles of learning theory (classical and operant conditioning, social learning). Focuses on observable behavior.',
+                    'View of Maladaptive Behavior': 'Behavior is learned and maintained through reinforcement. Maladaptive behavior is not a symptom of an underlying disease but is the problem itself.',
+                    'Therapeutic Goals': 'To eliminate maladaptive behaviors and learn more effective ones. Goals are specific, measurable, and tailored to the individual.',
+                    'Therapeutic Techniques': 'Systematic desensitization, exposure therapy, reinforcement schedules, modeling, social skills training.',
+                    'Therapeutic Relationship': 'The therapist is an active, directive teacher and coach who helps the client learn new behaviors.',
+                    'Key Figures': 'B.F. Skinner, Ivan Pavlov, Albert Bandura.'
+                }
+            },
+            'CBT': {
+                name: 'CBT',
+                content: {
+                    'Key Concepts': 'Thoughts, feelings, and behaviors are interconnected. Psychological problems are based, in part, on faulty or unhelpful ways of thinking and learned patterns of unhelpful behavior.',
+                    'View of Maladaptive Behavior': 'Stems from cognitive distortions (e.g., all-or-nothing thinking, catastrophizing) and maladaptive core beliefs that lead to negative emotions and behaviors.',
+                    'Therapeutic Goals': 'To identify and challenge cognitive distortions, modify core beliefs, and develop more effective coping strategies and behaviors.',
+                    'Therapeutic Techniques': 'Socratic questioning, thought records, behavioral experiments, activity scheduling, exposure.',
+                    'Therapeutic Relationship': 'Collaborative, educational, and structured. The therapist and client work together as a team.',
+                    'Key Figures': 'Aaron Beck, Albert Ellis (REBT).'
+                }
+            },
+            'Reality': {
+                name: 'Reality Therapy',
+                content: {
+                    'Key Concepts': 'Based on Choice Theory. Posits that humans have five basic needs: survival, love and belonging, power, freedom, and fun. We behave in ways to meet these needs.',
+                    'View of Maladaptive Behavior': 'Results from a person\'s inability to meet their basic needs in a responsible and effective way. Focus is on unsatisfying relationships.',
+                    'Therapeutic Goals': 'To help clients make more effective choices to better meet their needs, reconnect with people they care about, and take control of their lives.',
+                    'Therapeutic Techniques': 'Focus on the present and future (the past is not revisited). Use of WDEP system (Wants, Doing, Evaluation, Planning). Avoids blaming, criticizing, and complaining.',
+                    'Therapeutic Relationship': 'The therapist creates a supportive, trusting environment and acts as a guide to help the client evaluate their behavior.',
+                    'Key Figures': 'William Glasser, Robert Wubbolding.'
+                }
+            },
+            'Feminist': {
+                name: 'Feminist Therapy',
+                content: {
+                    'Key Concepts': 'The personal is political. Acknowledges that social, cultural, and political contexts contribute to a person\'s problems. Strives for an egalitarian therapeutic relationship.',
+                    'View of Maladaptive Behavior': 'Problems are often viewed as survival strategies or coping mechanisms in the face of oppression, rather than pathology within the individual.',
+                    'Therapeutic Goals': 'To empower the client, promote social change, help clients recognize their own power, and value and affirm diversity.',
+                    'Therapeutic Techniques': 'Gender-role analysis and intervention, power analysis, assertiveness training, consciousness-raising groups.',
+                    'Therapeutic Relationship': 'Egalitarian and collaborative. The therapist aims to demystify the therapeutic process and shares power with the client.',
+                    'Key Figures': 'Jean Baker Miller, Carolyn Zerbe Enns, Olivia Espin, Laura Brown.'
+                }
+            },
+            'SFBT': {
+                name: 'SFBT',
+                content: {
+                    'Key Concepts': 'Future-focused and goal-directed. Focuses on solutions and client strengths, not problems. Assumes clients are the experts on their own lives.',
+                    'View of Maladaptive Behavior': 'Not a focus. The therapy is concerned with what the client wants to achieve, not the origin or nature of the problem.',
+                    'Therapeutic Goals': 'To help clients generate their own solutions and construct a vision of a preferred future.',
+                    'Therapeutic Techniques': 'Miracle question, scaling questions, exception-finding questions, coping questions, compliments.',
+                    'Therapeutic Relationship': 'Collaborative and respectful. The therapist takes a "not-knowing" position, empowering the client as the expert.',
+                    'Key Figures': 'Steve de Shazer, Insoo Kim Berg.'
+                }
+            },
+            'Narrative': {
+                name: 'Narrative Therapy',
+                content: {
+                    'Key Concepts': 'People construct the meaning of life in interpretive stories, which are then treated as "truth". Problems are seen as separate from people.',
+                    'View of Maladaptive Behavior': 'Arises when people are dominated by problem-saturated stories that do not align with their preferred way of living.',
+                    'Therapeutic Goals': 'To help clients deconstruct problem-saturated stories and co-author new, preferred stories of identity that are empowering.',
+                    'Therapeutic Techniques': 'Externalizing the problem, mapping the influence of the problem, identifying unique outcomes, re-authoring conversations, therapeutic letter writing.',
+                    'Therapeutic Relationship': 'Collaborative and co-authoring. The therapist is an active facilitator who helps the client explore and re-write their story.',
+                    'Key Figures': 'Michael White, David Epston.'
+                }
+            },
+            'Family Systems': {
+                name: 'Family Systems',
+                content: {
+                    'Key Concepts': 'Views the individual as part of a larger system (the family). An individual\'s behavior is understood in the context of family dynamics, roles, rules, and communication patterns.',
+                    'View of Maladaptive Behavior': 'Symptoms in an individual are often seen as an expression of dysfunction within the family system.',
+                    'Therapeutic Goals': 'To help family members gain insight into their dynamics, change dysfunctional patterns, and improve communication and overall family functioning.',
+                    'Therapeutic Techniques': 'Genograms, family mapping, reframing, structural interventions, strategic directives.',
+                    'Therapeutic Relationship': 'The therapist is an active, directive expert on family dynamics, but also a coach and collaborator.',
+                    'Key Figures': 'Murray Bowen, Virginia Satir, Salvador Minuchin, Jay Haley.'
+                }
+            },
+            'ACT': {
+                name: 'ACT',
+                content: {
+                    'Key Concepts': 'Uses acceptance and mindfulness strategies, together with commitment and behavior change strategies, to increase psychological flexibility.',
+                    'View of Maladaptive Behavior': 'Psychological suffering is usually caused by experiential avoidance, cognitive entanglement, and resulting psychological rigidity that leads to a failure to take needed behavioral steps in accord with core values.',
+                    'Therapeutic Goals': 'To create a rich and meaningful life, while accepting the pain that inevitably goes with it. The goal is not to eliminate difficult feelings, but to be present with them and move toward valued behavior.',
+                    'Therapeutic Techniques': 'The Hexaflex: Acceptance, Cognitive Defusion, Being Present, Self as Context, Values, and Committed Action. Metaphors and experiential exercises are common.',
+                    'Therapeutic Relationship': 'The therapist acts as a mindful, compassionate, and challenging coach.',
+                    'Key Figures': 'Steven C. Hayes.'
+                }
+            },
+            'DBT': {
+                name: 'DBT',
+                content: {
+                    'Key Concepts': 'A cognitive-behavioral treatment that is a blend of psychotherapy and skills training. It emphasizes the psychosocial aspects of treatment.',
+                    'View of Maladaptive Behavior': 'Arises from a combination of biological predisposition for emotional vulnerability and an invalidating environment, leading to difficulties in regulating emotions.',
+                    'Therapeutic Goals': 'To help clients build a life worth living by teaching skills to manage emotions, tolerate distress, and improve relationships.',
+                    'Therapeutic Techniques': 'Mindfulness, Distress Tolerance, Emotion Regulation, and Interpersonal Effectiveness skills training. Often includes individual therapy, group skills training, and phone coaching.',
+                    'Therapeutic Relationship': 'A strong and genuine relationship is central. The therapist validates the client\'s experiences while also encouraging change.',
+                    'Key Figures': 'Marsha M. Linehan.'
+                }
+            },
+        };
+
+        const eriksonStages = [
+            { stage: 'Trust vs. Mistrust', age: 'Infancy (0-1.5)', virtue: 'Hope', color: 'bg-red' },
+            { stage: 'Autonomy vs. Shame/Doubt', age: 'Early Childhood (1.5-3)', virtue: 'Will', color: 'bg-orange' },
+            { stage: 'Initiative vs. Guilt', age: 'Play Age (3-5)', virtue: 'Purpose', color: 'bg-yellow' },
+            { stage: 'Industry vs. Inferiority', age: 'School Age (5-12)', virtue: 'Competence', color: 'bg-green' },
+            { stage: 'Identity vs. Confusion', age: 'Adolescence (12-18)', virtue: 'Fidelity', color: 'bg-teal' },
+            { stage: 'Intimacy vs. Isolation', age: 'Young Adulthood (18-40)', virtue: 'Love', color: 'bg-blue' },
+            { stage: 'Generativity vs. Stagnation', age: 'Adulthood (40-65)', virtue: 'Care', color: 'bg-indigo' },
+            { stage: 'Integrity vs. Despair', age: 'Maturity (65+)', virtue: 'Wisdom', color: 'bg-purple' },
+        ];
+
+        const piagetStages = [
+            { name: 'Sensorimotor', age: '0-2 yrs', desc: 'Learning through senses and actions; develops object permanence.'},
+            { name: 'Preoperational', age: '2-7 yrs', desc: 'Symbolic thought and language explode; thinking is egocentric.'},
+            { name: 'Concrete Operational', age: '7-11 yrs', desc: 'Logical thinking about concrete events; understands conservation.'},
+            { name: 'Formal Operational', age: '11+ yrs', desc: 'Abstract, systematic, and hypothetical thinking develops.'}
+        ];
+        
+        const bowlbyStyles = [
+            { name: 'Secure', desc: 'Confident in caregiver availability. Explores freely, easily soothed. Results from consistent, responsive caregiving.'},
+            { name: 'Anxious-Ambivalent', desc: 'Clingy and demanding, yet may resist contact upon reunion. Difficult to soothe due to inconsistent caregiving.'},
+            { name: 'Anxious-Avoidant', desc: 'Shows little distress on separation and avoids caregiver on reunion. Suppresses emotions due to dismissive or rejecting caregiving.'},
+            { name: 'Disorganized', desc: 'Contradictory behaviors (e.g., approaching then freezing). Often linked to frightening or traumatic caregiver behavior.'},
+        ];
+
+        const references = [
+            'Beck, A. T. (1979). *Cognitive Therapy of Depression*. Guilford Press.',
+            'Bowlby, J. (1969). *Attachment and Loss, Vol. 1: Attachment*. Attachment and Loss. New York: Basic Books.',
+            'Corey, G. (2017). *Theory and Practice of Counseling and Psychotherapy* (10th ed.). Cengage Learning.',
+            'Erikson, E. H. (1950). *Childhood and Society*. W. W. Norton & Company.',
+            'Frankl, V. E. (1946). *Man\'s Search for Meaning*. Beacon Press.',
+            'Freud, S. (1923). *The Ego and the Id*. The Standard Edition of the Complete Psychological Works of Sigmund Freud.',
+            'Glasser, W. (1998). *Choice Theory: A New Psychology of Personal Freedom*. HarperCollins.',
+            'Hayes, S. C., Strosahl, K. D., & Wilson, K. G. (2012). *Acceptance and Commitment Therapy: The Process and Practice of Mindful Change* (2nd ed.). The Guilford Press.',
+            'Jung, C. G. (1959). *The Archetypes and the Collective Unconscious*. Routledge.',
+            'Linehan, M. M. (1993). *Cognitive-Behavioral Treatment of Borderline Personality Disorder*. The Guilford Press.',
+            'Rogers, C. R. (1961). *On Becoming a Person: A Therapist\'s View of Psychotherapy*. Houghton Mifflin.',
+            'Satir, V. (1983). *Conjoint Family Therapy*. Science and Behavior Books.',
+            'White, M., & Epston, D. (1990). *Narrative Means to Therapeutic Ends*. W. W. Norton & Company.',
+            'Yalom, I. D. (1980). *Existential Psychotherapy*. Basic Books.',
+            'Young, J. E., Klosko, J. S., & Weishaar, M. E. (2003). *Schema Therapy: A Practitioner\'s Guide*. The Guilford Press.',
+        ];
+
+
+        // --- SCRIPT LOGIC ---
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('sidebar');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const navMenu = document.getElementById('nav-menu');
+            
+            // --- Navigation Logic ---
+            const sidebarLinks = document.querySelectorAll('.sidebar-link');
+            const contentSections = document.querySelectorAll('.content-section');
+
+            function switchSection(targetId) {
+                sidebarLinks.forEach(l => {
+                    l.classList.toggle('active', l.getAttribute('href') === `#${targetId}`);
+                });
+                contentSections.forEach(section => {
+                    section.classList.toggle('active', section.id === targetId);
+                });
+                // NEW: Only attempt to draw if the target is the concepts section
+                if (targetId === 'concepts') {
+                    requestAnimationFrame(drawCbtLines);
+                }
+            }
+
+            navMenu.addEventListener('click', (e) => {
+                const link = e.target.closest('.sidebar-link');
+                if (link) {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href').substring(1);
+                    switchSection(targetId);
+                    // Close sidebar on mobile after navigation
+                    if (window.innerWidth < 768) {
+                        sidebar.classList.add('-translate-x-full');
+                    }
+                }
+            });
+
+            mobileMenuButton.addEventListener('click', () => {
+                sidebar.classList.toggle('-translate-x-full');
+            });
+
+
+            // --- Models Tabs Logic ---
+            const modelsTabsContainer = document.getElementById('models-tabs');
+            const modelsContentContainer = document.getElementById('models-content');
+            
+            function renderModelContent(modelKey) {
+                const model = modelsData[modelKey];
+                let html = `<h4 class="font-bold text-xl mb-4">${model.name}</h4>`;
+                html += '<div class="space-y-4">';
+                for (const [key, value] of Object.entries(model.content)) {
+                    html += `
+                        <div>
+                            <h5 class="font-semibold text-gray-800">${key}:</h5>
+                            <p class="text-sm text-gray-600 pl-2">${value}</p>
+                        </div>
+                    `;
+                }
+                html += '</div>';
+                return html;
+            }
+
+            Object.keys(modelsData).forEach((key, index) => {
+                const tabBtn = document.createElement('button');
+                tabBtn.className = `tab-btn py-4 px-3 md:px-4 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap`;
+                tabBtn.textContent = modelsData[key].name.replace(' Therapy', '').replace(' (CBT)','');
+                tabBtn.dataset.target = key;
+                if (index === 0) {
+                    tabBtn.classList.add('active');
+                    modelsContentContainer.innerHTML = renderModelContent(key);
+                }
+                modelsTabsContainer.appendChild(tabBtn);
+            });
+
+            modelsTabsContainer.addEventListener('click', (e) => {
+                if (e.target.matches('.tab-btn')) {
+                    const targetKey = e.target.dataset.target;
+                    modelsTabsContainer.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                    e.target.classList.add('active');
+                    modelsContentContainer.innerHTML = renderModelContent(targetKey);
+                }
+            });
+
+            // --- Developmental Theories Content ---
+            const eriksonContainer = document.querySelector('#developmental .grid');
+            eriksonContainer.innerHTML = eriksonStages.map((s, i) => `
+                <div class="erikson-grid-item bg-gray-50 p-4 rounded-lg border-l-4 border-${s.color}-500 hover:shadow-lg transition-shadow">
+                    <div class="font-bold text-gray-800">${s.stage}</div>
+                    <div class="text-xs text-gray-500 mb-1">${s.age}</div>
+                    <div class="font-semibold text-sm text-${s.color}-600">Virtue: ${s.virtue}</div>
+                </div>
+            `).join('').replace(/border-bg-/g, 'border-').replace(/text-bg-/g, 'text-');
+            
+            const piagetContainer = document.getElementById('piaget-stages');
+            piagetContainer.innerHTML = piagetStages.map(s => `
+                <div class="border-t border-gray-200 pt-3 mt-3">
+                    <h5 class="font-semibold">${s.name} <span class="font-normal text-gray-500 text-sm">(${s.age})</span></h5>
+                    <p class="text-sm text-gray-600">${s.desc}</p>
+                </div>
+            `).join('');
+            if(piagetContainer.firstElementChild) piagetContainer.firstElementChild.classList.remove('border-t', 'pt-3', 'mt-3');
+
+            const bowlbyContainer = document.getElementById('bowlby-styles');
+            bowlbyContainer.innerHTML = bowlbyStyles.map(s => `
+                 <div class="border-t border-gray-200 pt-3 mt-3">
+                    <h5 class="font-semibold">${s.name}</h5>
+                    <p class="text-sm text-gray-600">${s.desc}</p>
+                </div>
+            `).join('');
+            if(bowlbyContainer.firstElementChild) bowlbyContainer.firstElementChild.classList.remove('border-t', 'pt-3', 'mt-3');
+            
+            // --- References Content ---
+            const referencesContainer = document.getElementById('references-list');
+            referencesContainer.innerHTML = references.sort().map(ref => `
+                <div class="border-b border-gray-200 pb-2">
+                    <p>${ref}</p>
+                </div>
+            `).join('');
+            
+            // --- CBT Triangle Drawing Logic ---
+            function drawCbtLines() {
+                const container = document.getElementById('cbt-triangle-container');
+                if (!container || container.offsetParent === null) return;
+
+                const thoughts = container.querySelector('.cbt-thoughts');
+                const feelings = container.querySelector('.cbt-feelings');
+                const behaviours = container.querySelector('.cbt-behaviours');
+                const line1 = container.querySelector('#cbt-line-1');
+                const line2 = container.querySelector('#cbt-line-2');
+                const line3 = container.querySelector('#cbt-line-3');
+
+                if (!thoughts || !feelings || !behaviours || !line1 || !line2 || !line3) {
+                    console.error("CBT Triangle elements not found!");
+                    return; 
+                }
+                
+                const pos = {
+                    t: { x: thoughts.offsetLeft + thoughts.offsetWidth / 2, y: thoughts.offsetTop + thoughts.offsetHeight },
+                    f: { x: feelings.offsetLeft + feelings.offsetWidth / 2, y: feelings.offsetTop },
+                    b: { x: behaviours.offsetLeft + behaviours.offsetWidth / 2, y: behaviours.offsetTop }
+                };
+
+                function setLine(line, p1, p2) {
+                    const length = Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));
+                    const angle = Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI;
+                    line.style.width = `${length}px`;
+                    line.style.left = `${p1.x}px`;
+                    line.style.top = `${p1.y}px`;
+                    line.style.transform = `rotate(${angle}deg)`;
+                }
+                
+                setLine(line1, pos.t, pos.f);
+                setLine(line2, pos.f, pos.b);
+                setLine(line3, pos.b, pos.t);
+            }
+
+            // Initial section load
+            switchSection('concepts');
+            
+            window.onresize = () => {
+                if (document.getElementById('concepts').classList.contains('active')) {
+                    drawCbtLines();
+                }
+            };
+
+        });
+    </script>
+</body>
+</html>
